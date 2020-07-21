@@ -7,8 +7,7 @@ namespace CaspianTechDemo.Models
     {
         public static double CalculatePrice(IEnumerable<OrderItem> orderItems)
         {
-            // Add functionality after tests are complete
-            return 0.0d;
+            return orderItems.Sum(x => x.Price);
         }
     }
 }
