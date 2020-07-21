@@ -1,5 +1,7 @@
+using CaspianTechDemo.Controllers;
 using CaspianTechDemo.Models;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace CaspianTechDemoTests
 {
@@ -11,9 +13,9 @@ namespace CaspianTechDemoTests
         }
 
         [Test, TestCaseSource(typeof(TestData), "TestCases")]
-        public double NewTestWithParams(OrderItem orderItem)
+        public double CalculateMenuPrice(IEnumerable<OrderItem> orderItem)
         {
-            return orderItem.Price + 1;
+            return Calculator.CalculatePrice(orderItem);
         }
 
     }

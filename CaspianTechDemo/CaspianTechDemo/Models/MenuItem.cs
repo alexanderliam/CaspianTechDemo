@@ -1,6 +1,6 @@
 ﻿namespace CaspianTechDemo.Models
 {
-    public static class MenuItems
+    public static class MenuItem
     {
         public static OrderItem Cola = new OrderItem
         {

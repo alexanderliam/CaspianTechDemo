@@ -13,8 +13,8 @@ namespace CaspianTechDemo.Controllers
     public class CafeController : ControllerBase
     {
         private readonly ILogger<CafeController> _logger;
-
-        private readonly IEnumerable<OrderItem> Menu = new List<OrderItem>() { MenuItems.Cola, MenuItems.Coffee, MenuItems.CheeseSandwich, MenuItems.SteakSandwich };
+        
+        private readonly IEnumerable<OrderItem> Menu = new List<OrderItem>() { MenuItem.Cola, MenuItem.Coffee, MenuItem.CheeseSandwich, MenuItem.SteakSandwich };
 
         public CafeController(ILogger<CafeController> logger)
         {
