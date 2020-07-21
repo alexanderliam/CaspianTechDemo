@@ -6,7 +6,7 @@ export class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { menuItems: [], selectedItems: [], loading: true };
+        this.state = { menuItems: [], selectedItems: [], total: 0.00, loading: true};
     }
 
     componentDidMount() {
@@ -64,7 +64,11 @@ export class Home extends Component {
                     </tbody>
                 </table>
 
-                <button onClick={() => { this.setState({selectedItems: []}) }}>Clear selection</button>
+                <button onClick={() => { this.setState({ selectedItems: [] }) }}>Clear selection</button>
+
+                <button onClick={() => { this.calculatePrices() }}>Calculate Total</button>
+
+                <div>Total: &pound;{this.state.total.toFixed(2)}</div>
             </div>
         );
     }
@@ -72,9 +76,26 @@ export class Home extends Component {
     async populateMenu() {
         const response = await fetch('cafe');
         const data = await response.json();
-        console.log(data);
         this.setState({ menuItems: data, loading: false });
     }
 
+    async calculatePrices() {
 
+        const response = await fetch('cafe/calculatePrice', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow', 
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify(this.state.selectedItems ?? []) 
+        }).then(response => response.json())
+            .then(response => {
+                this.setState({ total: response })
+            });
+
+    }
 }

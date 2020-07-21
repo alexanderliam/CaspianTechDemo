@@ -31,5 +31,13 @@ namespace CaspianTechDemo.Controllers
 
             return Menu.ToArray();
         }
+
+        [HttpPost("CalculatePrice")]
+        public double CalculatePrice([FromBody] IEnumerable<OrderItem> orderItems)
+        {
+            _logger.LogInformation("Calculating Price");
+
+            return _calculator.CalculatePrice(orderItems);
+        }
     }
 }
