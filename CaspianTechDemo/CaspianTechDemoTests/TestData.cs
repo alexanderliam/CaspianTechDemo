@@ -1,5 +1,6 @@
 ﻿using CaspianTechDemo.Models;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -63,14 +64,14 @@ namespace CaspianTechDemoTests
                         }
                     ).Returns(0.0d);
 
-                // Single Item any food, 10%
+                // Single Item any food, 10% Should be rounded to 2 decimal places
                 yield return
                     new TestCaseData(
                         new List<OrderItem>
                         {
                             MenuItem.CheeseSandwich
                         }
-                    ).Returns(MenuItem.CheeseSandwich.Price * 0.1f);
+                    ).Returns(Math.Round(MenuItem.CheeseSandwich.Price * 0.1f, 2));
 
                 // Single Item any hot food, 20%
                 yield return
@@ -86,6 +87,12 @@ namespace CaspianTechDemoTests
                     new TestCaseData(
                         new List<OrderItem>
                         {
+                            new OrderItem() {
+                                Name = "Expensive Whiskey 500ml",
+                                Price = 99.50,
+                                IsFood = false,
+                                IsHot = false,
+                            },
                             MenuItem.SteakSandwich // Lots of items to go over £20 service charge
                         }
                     ).Returns(20.0d);
