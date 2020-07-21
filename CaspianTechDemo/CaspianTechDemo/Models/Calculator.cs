@@ -9,5 +9,11 @@ namespace CaspianTechDemo.Models
         {
             return orderItems.Sum(x => x.Price);
         }
+
+        public double CalculateServiceCharge(IEnumerable<OrderItem> orderItems)
+        {
+            return 0.0d;
+        }
+
     }
 }

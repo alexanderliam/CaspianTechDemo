@@ -12,12 +12,20 @@ namespace CaspianTechDemoTests
         {
         }
 
-        [Test, TestCaseSource(typeof(TestData), "TestCases")]
-        public double CalculateMenuPrice(IEnumerable<OrderItem> orderItem)
+        [Test, TestCaseSource(typeof(TestData), "CalculateTotal")]
+        public double CalculateTotal(IEnumerable<OrderItem> orderItems)
         {
             ICalculator calculator = new Calculator();
 
-            return calculator.CalculatePrice(orderItem);
+            return calculator.CalculatePrice(orderItems);
+        }
+
+        [Test, TestCaseSource(typeof(TestData), "CalculateServiceCharge")]
+        public double CalculateServiceCharge(IEnumerable<OrderItem> orderItems)
+        {
+            ICalculator calculator = new Calculator();
+
+            return calculator.CalculateServiceCharge(orderItems);
         }
 
     }
