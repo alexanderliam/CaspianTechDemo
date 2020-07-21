@@ -7,5 +7,7 @@
         public double Price { get; set; }
 
         public bool IsHot { get; set; }
+
+        public bool IsFood { get; set; }
     }
 }
