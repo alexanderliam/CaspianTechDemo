@@ -15,7 +15,9 @@ namespace CaspianTechDemoTests
         [Test, TestCaseSource(typeof(TestData), "TestCases")]
         public double CalculateMenuPrice(IEnumerable<OrderItem> orderItem)
         {
-            return Calculator.CalculatePrice(orderItem);
+            ICalculator calculator = new Calculator();
+
+            return calculator.CalculatePrice(orderItem);
         }
 
     }

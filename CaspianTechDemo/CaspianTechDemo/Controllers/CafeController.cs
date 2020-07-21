@@ -13,12 +13,15 @@ namespace CaspianTechDemo.Controllers
     public class CafeController : ControllerBase
     {
         private readonly ILogger<CafeController> _logger;
-        
+
+        private readonly ICalculator _calculator;
+
         private readonly IEnumerable<OrderItem> Menu = new List<OrderItem>() { MenuItem.Cola, MenuItem.Coffee, MenuItem.CheeseSandwich, MenuItem.SteakSandwich };
 
-        public CafeController(ILogger<CafeController> logger)
+        public CafeController(ILogger<CafeController> logger, ICalculator calculator)
         {
             _logger = logger;
+            _calculator = calculator;
         }
 
         [HttpGet]

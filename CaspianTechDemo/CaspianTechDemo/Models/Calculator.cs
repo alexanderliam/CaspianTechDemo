@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace CaspianTechDemo.Models
 {
-    public static class Calculator
+    public class Calculator: ICalculator
     {
-        public static double CalculatePrice(IEnumerable<OrderItem> orderItems)
+        public double CalculatePrice(IEnumerable<OrderItem> orderItems)
         {
             return orderItems.Sum(x => x.Price);
         }
