@@ -37,7 +37,7 @@ namespace CaspianTechDemo.Controllers
         {
             _logger.LogInformation("Calculating Price");
 
-            return _calculator.CalculatePrice(orderItems);
+            return _calculator.CalculatePrice(orderItems) + _calculator.CalculateServiceCharge(orderItems);
         }
     }
 }
